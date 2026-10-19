@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            margin: 0;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2563eb;
+        }
+
+        p {
+            text-align: center;
+            color: #64748b;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 11px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #result {
+            margin-top: 18px;
+            text-align: center;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Job Application</h1>
+        <p>Apply for your desired position</p>
+
+        <form id="jobForm">
+
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" required>
+
+            <label for="position">Job Position *</label>
+            <select id="position" required>
+                <option value="">Select a position</option>
+                <option>IT Support Engineer</option>
+                <option>IAM Analyst</option>
+                <option>Help Desk Technician</option>
+                <option>Software Developer</option>
+            </select>
+
+            <label for="experience">Experience *</label>
+            <select id="experience" required>
+                <option value="">Select experience</option>
+                <option>Fresher</option>
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3+ years</option>
+            </select>
+
+            <label for="resume">Upload Resume</label>
+            <input type="file" id="resume"
+                   accept=".pdf,.doc,.docx">
+
+            <label for="coverLetter">Cover Letter</label>
+            <textarea id="coverLetter"
+                placeholder="Tell us about yourself..."></textarea>
+
+            <button type="submit">Submit Application</button>
+
+            <div id="result" role="status"></div>
+
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("jobForm");
+        const result = document.getElementById("result");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const position = document.getElementById("position").value;
+
+            result.textContent =
+                "Thank you, " + name +
+                "! Your application for " + position +
+                " is complete.";
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
